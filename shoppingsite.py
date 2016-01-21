@@ -86,11 +86,21 @@ def add_to_cart(id):
     page and display a confirmation message: 'Successfully added to cart'.
     """
 
-    if id in session:
-        session[id] += 1
+    #import pdb; pdb.set_trace()
+    # id = int(id)
+    # print "type of id is ", type(id)
+    # print "this is before adding to cart", session.items()
+  
+    if 'cart' in session.keys():
+        # print "inside the if statement the type of id is ", type(id)
+        session['cart'].append(id)
     else:
-        session[id] = 1
-    print session.items()
+        session['cart'] = []
+        session['cart'].append(id)
+
+    flash("Sucessfully added to cart.")
+    
+    # print "Session dict is currently ", session
     # TODO: Finish shopping cart functionality
 
     # The logic here should be something like:
